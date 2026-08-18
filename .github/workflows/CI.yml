@@ -41,7 +41,7 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ lower(env.IMAGE_NAME) }}:latest
-            ${{ env.REGISTRY }}/${{ lower(env.IMAGE_NAME) }}:${{ github.sha }}
+            ${{ env.REGISTRY }}/${{ lower(github.repository) }}:latest
+            ${{ env.REGISTRY }}/${{ lower(github.repository) }}:${{ github.sha }}
 
             
