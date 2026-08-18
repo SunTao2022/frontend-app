@@ -1,0 +1,12 @@
+name: Debug Expression
+on: [push]
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test lower expression
+        run: |
+          echo "repo = ${{ github.repository }}"
+          echo "lower = ${{ lower(github.repository) }}"
+          echo "combined = ghcr.io/${{ lower(github.repository) }}:latest"
