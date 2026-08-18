@@ -1,0 +1,13 @@
+name: Test Lower Function
+on:
+  push:
+    branches:
+      - master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo lower expression
+        run: |
+          echo "repo: ${{ github.repository }}"
+          echo "lower: ${{ lower(github.repository) }}"
