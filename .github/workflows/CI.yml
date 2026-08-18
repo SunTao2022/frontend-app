@@ -1,6 +1,6 @@
 name: Build and Push Docker Image
 
-"on":
+on:
   push:
     branches:
       - master
@@ -42,6 +42,4 @@ jobs:
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ lower(github.repository) }}:latest
-            ${{ env.REGISTRY }}/${{ lower(github.repository) }}:${{ github.sha }}
-
-            
+            ${{ env.REGISTRY }}/${{ lower(github.repository) }}:${{ github.sha }}      
