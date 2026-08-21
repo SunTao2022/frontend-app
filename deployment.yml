@@ -17,7 +17,7 @@ spec:
 
       containers:
       - name: frontend-app
-        image: ghcr.io/suntao2022/frontend-app:latest
+        image: ghcr.io/suntao2022/frontend-app:e68e6dee83cbeee1ba410607229fa59e6a0892d7
         imagePullPolicy: Always
         ports:
         - containerPort: 80
