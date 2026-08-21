@@ -30,4 +30,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/suntao2022/frontend-app:latest
+          tags: |
+            ghcr.io/suntao2022/frontend-app:latest
+            ghcr.io/suntao2022/frontend-app:${{ github.sha }}
+
