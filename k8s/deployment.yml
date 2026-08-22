@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: frontend-app
+  template:
+    metadata:
+      labels:
+        app: frontend-app
+    spec:
+      imagePullSecrets:
+      - name: ghcr-secret
+
+      containers:
+      - name: frontend-app
+        image: ghcr.io/suntao2022/frontend-app:e68e6dee83cbeee1ba410607229fa59e6a0892d7
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-app
+spec:
+  selector:
+    app: frontend-app
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 80
+  type: ClusterIP
