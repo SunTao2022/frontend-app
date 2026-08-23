@@ -10,7 +10,7 @@ spec:
   - name: frontend-app
     rules:
     - alert: FrontendAppDown
-      expr: up{job="frontend-app"} == 0
+      expr: up{job="frontend-app"} == 0 or absent(up{job="frontend-app"})
       for: 1m
       labels:
         severity: critical
