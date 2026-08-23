@@ -33,4 +33,10 @@ jobs:
           tags: |
             ghcr.io/suntao2022/frontend-app:latest
             ghcr.io/suntao2022/frontend-app:${{ github.sha }}
+      - name: Scan image for vulnerabilities
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ghcr.io/suntao2022/frontend-app:latest
+          severity: CRITICAL,HIGH
+          exit-code: '1'
 
