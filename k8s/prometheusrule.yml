@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: frontend-app
+  namespace: monitoring
+  labels:
+    release: monitoring # 重要！Prometheus 只认这个标签（和 ServiceMonitor 一样）
+spec:
+  groups:
+  - name: frontend-app
+    rules:
+    - alert: FrontendAppDown
+      expr: up{job="frontend-app"} == 0
+      for: 1m
+      labels:
+        severity: critical
+      annotations:
+        summary: "frontend-app is down"
+        description: "nginx-exporter is not scraping (up=0) for 1 minute"
