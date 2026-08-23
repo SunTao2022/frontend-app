@@ -3,6 +3,8 @@ kind: ServiceMonitor
 metadata:
   name: frontend-app
   namespace: monitoring
+  labels:
+    release: monitoring # ← 加这行！Prometheus 只认这个标签
 spec:
   selector:
     matchLabels:
